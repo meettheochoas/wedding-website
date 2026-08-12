@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Jessica & Erick — October 10, 2026</title>
+
+<meta property="og:title" content="Jessica &amp; Erick | 10.10.2026">
+<meta property="og:description" content="We're getting married! View our wedding details and RSVP.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meettheochoas.com/">
+<meta property="og:image" content="https://meettheochoas.com/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Jessica &amp; Erick">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jessica &amp; Erick | 10.10.2026">
+<meta name="twitter:description" content="We're getting married! View our wedding details and RSVP.">
+<meta name="twitter:image" content="https://meettheochoas.com/images/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=WindSong:wght@400;500&family=Mrs+Saint+Delafield&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#1c1a16;
+    --ink-soft:#3a352c;
+    --parchment:#f3efe4;
+    --sage:#d8d8c8;
+    --brown-dark:#38311f;
+    --brass:#a9803d;
+    --brass-bright:#c9a24a;
+    --clay:#a65c43;
+    --line:rgba(28,26,22,0.18);
+    --shadow: 0 20px 60px rgba(28,26,22,0.18);
+    --serif: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+    --script: 'Blosta Script', 'WindSong', 'Mrs Saint Delafield', cursive;
+    --paper-noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    --sans: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  }
+  /* To activate the real Blosta Script font, uncomment and fill in below with a base64-embedded @font-face
+     (only if you own a valid license for web-embedding it):
+  @font-face{
+    font-family:'Blosta Script';
+    src:url("data:font/woff2;base64,PASTE_BASE64_HERE") format('woff2');
+    font-weight:400; font-style:normal; font-display:swap;
+  }
+  */
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--serif);
+    background:var(--parchment);
+    color:var(--ink);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer;}
+
+  .tracked{font-family:var(--serif); font-size:13px; letter-spacing:0.32em; text-transform:uppercase; color:var(--ink-soft); font-weight:400;}
+  .tracked.small{font-size:11px; letter-spacing:0.28em;}
+  .script{font-family:var(--script); font-weight:400; line-height:0.95;}
+
+  .lockup{text-align:center; margin-bottom:44px;}
+  .lockup .pre{display:block;}
+  .lockup .script-main{display:block; font-size:clamp(48px,9vw,88px); color:var(--ink); margin-top:2px;}
+  .lockup .post{display:block; margin-top:10px; font-size:clamp(28px,5vw,44px); letter-spacing:0.14em; text-transform:uppercase; font-family:var(--serif); font-weight:400;}
+
+  /* ================= ENVELOPE / OPENING SCREEN ================= */
+  #envelope-screen{
+    position:fixed; inset:0; z-index:100;
+    background:radial-gradient(130% 110% at 50% 20%, #e9e2d2 0%, #ddd4bf 55%, #cfc4a9 100%);
+    display:flex; align-items:center; justify-content:center;
+    transition:opacity 1.1s ease, visibility 1.1s ease;
+  }
+  #envelope-screen.hidden{opacity:0; visibility:hidden; pointer-events:none;}
+  .invite-wrap{perspective:1800px; display:flex; flex-direction:column; align-items:center; padding:32px; text-align:center; transition:transform 1s cubic-bezier(.6,.05,.2,1), opacity 1s ease;}
+  .invite-wrap.opened{transform:translateY(-30px) scale(0.96); opacity:0;}
+  .envelope{
+    position:relative; width:min(80vw, 320px); height:min(58vw, 232px); margin-bottom:38px;
+    filter:drop-shadow(0 36px 32px rgba(20,14,8,0.32)) drop-shadow(0 8px 8px rgba(20,14,8,0.2));
+  }
+  .env-body{
+    position:absolute; inset:0; z-index:1;
+    background-image:url('/images/envelope-pattern.jpg');
+    background-size:100% auto; background-position:top center; background-repeat:no-repeat;
+    background-color:#241a10;
+    border:1px solid rgba(0,0,0,0.35);
+    box-shadow: inset 0 0 46px rgba(0,0,0,0.4), inset 0 0 3px rgba(255,235,210,0.08);
+    overflow:hidden;
+  }
+  .env-body::before{
+    content:''; position:absolute; inset:0;
+    background-image:var(--paper-noise); background-size:140px 140px;
+    mix-blend-mode:overlay; opacity:0.3; pointer-events:none;
+  }
+  .env-wordmark{
+    position:absolute; left:50%; top:33%; transform:translate(-50%,-50%);
+    font-family:var(--script); font-size:34px;
+    color:#f7ecd8; z-index:2; white-space:nowrap;
+    text-shadow:0 1px 3px rgba(0,0,0,0.85), 0 2px 12px rgba(0,0,0,0.6);
+  }
+  .env-face{
+    position:absolute; left:0; bottom:0; width:100%; height:38%; z-index:2;
+    background-image:url('/images/envelope-pattern.jpg');
+    background-size:220% auto; background-position:center 92%; background-repeat:no-repeat;
+    background-color:#241a10;
+    box-shadow:0 -1px 0 rgba(0,0,0,0.25);
+    overflow:hidden;
+  }
+  .env-face::before{
+    content:''; position:absolute; inset:0;
+    background-image:var(--paper-noise); background-size:140px 140px;
+    mix-blend-mode:overlay; opacity:0.3; pointer-events:none;
+  }
+  .env-face::after{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.28), transparent 30%),
+      linear-gradient(90deg, rgba(0,0,0,0.3), transparent 14%, transparent 86%, rgba(0,0,0,0.3));
+  }
+  .env-flap{
+    position:absolute; top:0; left:0; width:100%; height:66%; z-index:3;
+    clip-path:polygon(0 0, 100% 0, 50% 100%);
+    transform-origin:top center; transform-style:preserve-3d;
+    transition:transform 1.1s cubic-bezier(.7,0,.3,1), z-index 0s 1.1s;
+  }
+  .env-flap.open{transform:rotateX(178deg); z-index:0;}
+  .env-flap-face{position:absolute; inset:0; backface-visibility:hidden; overflow:hidden;}
+  .env-flap-front{
+    background-image:url('/images/envelope-pattern.jpg');
+    background-size:100% auto; background-position:top center; background-repeat:no-repeat;
+    background-color:#241a10;
+    box-shadow:0 1px 0 rgba(0,0,0,0.3), inset 0 -22px 30px -14px rgba(0,0,0,0.5);
+  }
+  .env-flap-front::before{
+    content:''; position:absolute; inset:0;
+    background-image:var(--paper-noise); background-size:140px 140px;
+    mix-blend-mode:overlay; opacity:0.28; pointer-events:none;
+  }
+  .env-flap-front::after{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(circle at 50% 6%, rgba(255,225,190,0.16), transparent 42%),
+      linear-gradient(90deg, rgba(0,0,0,0.34), transparent 16%, transparent 84%, rgba(0,0,0,0.34));
+  }
+  .env-flap-back{
+    transform:rotateX(180deg);
+    background-image:url('/images/envelope-pattern.jpg');
+    background-size:100% auto; background-position:top center; background-repeat:no-repeat;
+    background-color:#241a10;
+  }
+  .env-flap-back::before{
+    content:''; position:absolute; inset:0;
+    background-image:var(--paper-noise); background-size:140px 140px;
+    mix-blend-mode:overlay; opacity:0.28; pointer-events:none;
+  }
+  .env-flap-back::after{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(circle at 50% 6%, rgba(255,225,190,0.16), transparent 42%);
+  }
+  .invite-date{font-family:var(--serif); letter-spacing:0.35em; font-size:13px; color:var(--ink-soft); text-transform:uppercase;}
+  .open-btn{margin-top:32px; background:transparent; border:1px solid rgba(28,26,22,0.4); color:var(--ink); padding:15px 40px; font-size:12px; letter-spacing:0.28em; text-transform:uppercase; font-family:var(--serif); transition:background 0.35s ease, color 0.35s ease;}
+  .open-btn:hover{background:var(--ink); color:var(--parchment); border-color:var(--ink);}
+
+  /* ================= MAIN SITE ================= */
+  #main-site{opacity:0; visibility:hidden; transition:opacity 1.2s ease 0.2s;}
+  #main-site.revealed{opacity:1; visibility:visible;}
+
+  nav.site-nav{position:sticky; top:0; z-index:50; background:rgba(243,239,228,0.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; gap:26px; padding:18px 22px; flex-wrap:wrap;}
+  nav.site-nav ul{list-style:none; display:none; gap:26px;}
+  nav.site-nav ul li a{font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink-soft); padding-bottom:3px; border-bottom:1px solid transparent; transition:border-color 0.3s ease, color 0.3s ease; font-family:var(--serif); font-weight:400;}
+  nav.site-nav ul li a:hover{color:var(--clay); border-color:var(--clay);}
+  nav.site-nav .nav-logo{font-family:var(--script); font-size:26px; color:var(--ink); padding:0 6px;}
+  @media (min-width:900px){ nav.site-nav ul{display:flex;} nav.site-nav ul.right{order:3;} }
+  .nav-rsvp-btn{background:var(--ink); color:var(--parchment); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; padding:9px 18px; border:1px solid var(--ink); transition:background 0.3s ease, color 0.3s ease; font-family:var(--serif); font-weight:400;}
+  .nav-rsvp-btn:hover{background:transparent; color:var(--ink);}
+  .nav-menu-toggle{display:block; background:none; border:none; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; font-family:var(--serif);}
+  @media (min-width:900px){ .nav-menu-toggle{display:none;} }
+  .mobile-menu{display:none; flex-direction:column; background:var(--parchment); border-bottom:1px solid var(--line);}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{padding:14px 22px; border-top:1px solid var(--line); font-size:12px; letter-spacing:0.18em; text-transform:uppercase; font-family:var(--serif);}
+  @media (min-width:900px){ .mobile-menu{display:none !important;} }
+
+  section{padding:110px 22px; max-width:900px; margin:0 auto; position:relative; scroll-margin-top:90px;}
+  section.tight{padding-top:80px; padding-bottom:80px;}
+  section.full-bleed{max-width:none; padding:0;}
+
+  /* HERO */
+  #home{position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:150px 22px 90px; max-width:none;}
+  #home .hero-bg{position:absolute; inset:0; object-fit:cover; width:100%; height:100%; z-index:0;}
+  #home .hero-overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(60,52,38,0.28), rgba(60,52,38,0.42) 55%, rgba(60,52,38,0.6)); z-index:1;}
+  #home .hero-content{position:relative; z-index:2; color:var(--parchment);}
+  #home .kicker{font-family:var(--serif); font-weight:400; font-size:14px; letter-spacing:0.3em; text-transform:uppercase; color:rgba(246,240,227,0.9);}
+  #home .invite-script{font-family:var(--script); font-size:clamp(52px,13vw,110px); line-height:0.95; color:var(--parchment); margin:14px 0;}
+  #home .date-line{display:inline-block; margin-top:6px; font-size:14px; letter-spacing:0.35em; text-transform:uppercase; color:rgba(246,240,227,0.92);}
+  .hero-cta{margin-top:34px; display:inline-block; background:transparent; color:var(--parchment); padding:15px 36px; font-size:12px; letter-spacing:0.24em; text-transform:uppercase; border:1px solid rgba(246,240,227,0.55); font-family:var(--serif); transition:background 0.3s ease, color 0.3s ease;}
+  .hero-cta:hover{background:var(--parchment); color:var(--ink);}
+
+  /* COUNTDOWN — ornate framed */
+  #countdown{background:var(--brown-dark); color:var(--parchment); text-align:center; padding:70px 20px;}
+  .cd-frame{position:relative; max-width:900px; margin:0 auto; padding:60px 20px; border:1px solid rgba(201,162,74,0.55);}
+  .cd-frame::before, .cd-frame::after{content:''; position:absolute; width:46px; height:46px; border:1px solid rgba(201,162,74,0.6); opacity:0.8;}
+  .cd-frame::before{top:-1px; left:-1px; border-right:none; border-bottom:none;}
+  .cd-frame::after{bottom:-1px; right:-1px; border-left:none; border-top:none;}
+  #countdown .script{font-size:clamp(28px,5vw,42px); color:var(--brass-bright);}
+  .countdown-grid{display:flex; justify-content:center; gap:clamp(18px,5vw,54px); margin-top:30px; flex-wrap:wrap;}
+  .countdown-grid div{min-width:64px;}
+  .countdown-num{font-family:var(--serif); font-size:clamp(42px,7vw,64px); line-height:1;}
+  .countdown-lbl{margin-top:6px; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:rgba(246,240,227,0.65); font-family:var(--serif);}
+
+  /* DETAILS: ceremony & reception, script lockups side by side */
+  .details-grid{display:grid; gap:56px; grid-template-columns:1fr;}
+  @media (min-width:720px){ .details-grid{grid-template-columns:1fr 1fr;} }
+  .detail-card{text-align:center;}
+  .detail-card .script{font-size:clamp(40px,7vw,58px); color:var(--ink);}
+  .detail-card h3{font-size:22px; letter-spacing:0.1em; text-transform:uppercase; font-weight:400; margin-top:14px;}
+  .detail-card .meta{font-size:14px; color:var(--ink-soft); line-height:2; font-weight:400; margin-top:8px;}
+
+  /* WEEKEND EVENTS / dotted timeline */
+  .dot-timeline{max-width:640px; margin:0 auto;}
+  .dot-row{display:flex; align-items:baseline; gap:12px; padding:14px 0;}
+  .dot-row .time{font-size:16px; white-space:nowrap;}
+  .dot-row .fill{flex:1; border-bottom:2px dotted rgba(28,26,22,0.35); transform:translateY(-4px);}
+  .dot-row .title{font-size:15px; letter-spacing:0.06em; text-transform:uppercase; white-space:nowrap; text-align:right;}
+
+  /* STAY / hotel — sage panel with faint pattern */
+  .sage-panel{
+    background:var(--sage); padding:70px 30px; text-align:center; position:relative; overflow:hidden;
+  }
+  .sage-panel > *{position:relative; z-index:1;}
+  .sage-panel .script{font-size:clamp(40px,7vw,56px);}
+  .sage-panel .meta{font-size:14px; color:var(--ink-soft); line-height:2; margin-top:18px; font-weight:400;}
+  .sage-panel .meta em{font-style:italic;}
+  .book-btn{display:inline-block; margin-top:26px; background:var(--parchment); color:var(--ink); padding:15px 36px; border-radius:30px; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; text-decoration:underline; font-family:var(--serif); transition:background .3s ease;}
+  .book-btn:hover{background:#fff;}
+
+  /* DRESS CODE — emphasized so guests can't miss it */
+  .dress-emphasis{border-top:4px solid var(--clay); border-bottom:4px solid var(--clay);}
+  .dress-flag{display:block; color:var(--clay); margin-bottom:14px;}
+  #dress-code .script{font-size:clamp(40px,7vw,56px);}
+  #dress-code .quote{max-width:560px; margin:20px auto 0; font-style:italic; font-size:18px; line-height:1.9; color:var(--ink-soft); font-weight:400;}
+  #dress-code .no-note{margin-top:26px; font-style:italic; font-size:17px; color:var(--clay); letter-spacing:0.03em;}
+  #dress-code .subtitle{letter-spacing:0.24em; text-transform:uppercase; font-size:20px; margin-top:12px; color:var(--clay);}
+
+  /* OUR STORY */
+  .story-grid{display:grid; gap:40px; grid-template-columns:1fr; align-items:start;}
+  @media (min-width:760px){ .story-grid{grid-template-columns:300px 1fr;} }
+  .story-photo{width:100%; max-width:300px; aspect-ratio:1/1; border-radius:50%; object-fit:cover; margin:0 auto; display:block; box-shadow:var(--shadow);}
+  .story-copy p{font-weight:400; line-height:1.9; color:var(--ink-soft); margin-bottom:16px; font-size:17px;}
+  .torn-note{margin-top:22px; max-width:280px; background:var(--sage); padding:22px 24px 30px; border:1px solid var(--line); transform:rotate(-2deg); position:relative; clip-path:polygon(0 0,100% 0,100% 88%,92% 100%,80% 90%,60% 100%,40% 88%,18% 100%,0 90%);}
+  .torn-note .fam{font-family:var(--script); font-size:34px;}
+  .torn-note .fdate{margin-top:6px; font-size:12px; letter-spacing:0.2em; color:var(--ink-soft);}
+  .torn-note .clip{position:absolute; top:-12px; right:26px; font-size:22px; color:var(--ink-soft); transform:rotate(8deg);}
+
+  /* FAQ */
+  #faq{background:var(--brown-dark); color:var(--parchment); max-width:none;}
+  #faq .inner{max-width:900px; margin:0 auto; padding:0 22px;}
+  #faq .script{color:var(--parchment); font-size:clamp(32px,6vw,52px); display:block; text-align:center; margin-bottom:56px;}
+  .faq-grid{display:grid; gap:44px 60px; grid-template-columns:1fr;}
+  @media (min-width:720px){ .faq-grid{grid-template-columns:1fr 1fr;} }
+  .faq-q-title{font-size:17px; letter-spacing:0.08em; text-transform:uppercase; text-align:center; margin-bottom:10px;}
+  .faq-a-text{font-size:15px; font-weight:400; line-height:1.8; text-align:center; color:rgba(246,240,227,0.82);}
+
+  /* REGISTRY */
+  #registry{background:var(--brown-dark); background-image:linear-gradient(rgba(56,49,31,0.78), rgba(56,49,31,0.86)); color:var(--parchment); max-width:none; padding:100px 22px; text-align:center;}
+  #registry .script{font-size:clamp(48px,9vw,80px); color:var(--parchment);}
+  #registry .sub{max-width:640px; margin:24px auto 0; font-weight:400; line-height:1.9; font-size:16px; color:rgba(246,240,227,0.88);}
+  .registry-info{max-width:360px; margin:34px auto 0;}
+  .registry-info .line{padding:14px 0; border-top:1px solid rgba(246,240,227,0.22); font-size:14px; letter-spacing:0.06em;}
+  .registry-info .line:last-child{border-bottom:1px solid rgba(246,240,227,0.22);}
+  .registry-info .line b{color:var(--brass-bright); font-weight:400; letter-spacing:0.1em;}
+
+  /* RSVP */
+  #rsvp{text-align:center;}
+  #rsvp .script{font-size:clamp(48px,9vw,80px);}
+  .scroll-divider{width:220px; height:16px; margin:18px auto 26px; opacity:0.75;}
+  .rsvp-deadline{font-size:13px; letter-spacing:0.3em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:18px;}
+  #rsvp .sub{max-width:520px; margin:0 auto; font-style:italic; font-size:17px; line-height:1.8; color:var(--ink-soft);}
+  .rsvp-kids{font-style:italic; font-size:16px; color:var(--ink); margin-top:16px;}
+  .rsvp-no-kids{display:inline-block; margin-top:20px; padding:9px 24px; border-top:1px solid var(--clay); border-bottom:1px solid var(--clay); font-family:var(--serif); font-style:italic; font-size:19px; letter-spacing:0.04em; color:var(--clay);}
+  .rsvp-box{max-width:520px; margin:40px auto 0; text-align:left;}
+  .search-wrap{position:relative;}
+  .rsvp-input{width:100%; padding:16px 18px; background:#fff; border:1px solid var(--line); color:var(--ink); font-family:var(--sans); font-size:16px;}
+  .rsvp-input:focus{outline:none; border-color:var(--brass);}
+  .dropdown-list{position:absolute; left:0; right:0; top:calc(100% + 6px); max-height:min(230px, 45vh); overflow-y:auto; -webkit-overflow-scrolling:touch; background:#fff; border:1px solid var(--line); z-index:5; display:none; box-shadow:var(--shadow);}
+  .dropdown-list.open{display:block;}
+  .dropdown-list button{width:100%; text-align:left; background:none; border:none; color:var(--ink); padding:13px 16px; font-size:16px; border-bottom:1px solid var(--line); font-family:var(--sans); -webkit-tap-highlight-color:rgba(0,0,0,0.06);}
+  .dropdown-list button:hover{background:var(--parchment);}
+  .dropdown-empty{padding:14px 16px; font-size:13px; color:var(--ink-soft); font-family:var(--sans);}
+  .seat-note{margin-top:18px; padding:14px 16px; border-left:2px solid var(--brass); background:#fff; font-size:14px; font-family:var(--sans);}
+  .rsvp-form{margin-top:26px; display:none; flex-direction:column; gap:20px; font-family:var(--sans);}
+  .rsvp-form.show{display:flex;}
+  .field-label{font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--brass); margin-bottom:10px; display:block; font-family:var(--sans);}
+  .attend-toggle{display:flex; gap:12px;}
+  .attend-toggle button{flex:1; padding:14px; border:1px solid var(--line); background:#fff; color:var(--ink); font-size:12px; letter-spacing:0.14em; text-transform:uppercase; font-family:var(--sans); transition:background 0.25s ease, border-color 0.25s ease;}
+  .attend-toggle button.selected{background:var(--brass); color:#fff; border-color:var(--brass);}
+  .guest-checklist label{display:flex; align-items:center; gap:10px; padding:10px 0; font-size:14px; border-bottom:1px solid var(--line); font-family:var(--sans);}
+  .rsvp-textarea, .rsvp-form input[type=text]{width:100%; background:#fff; border:1px solid var(--line); color:var(--ink); padding:13px 15px; font-family:var(--sans); font-size:14px;}
+  .rsvp-textarea{min-height:90px; resize:vertical;}
+  .submit-btn{background:var(--ink); color:var(--parchment); border:none; padding:16px; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; font-weight:400; font-family:var(--sans);}
+  .submit-btn:hover{background:var(--ink-soft);}
+  .rsvp-msg{margin-top:18px; font-size:14px; line-height:1.7; font-family:var(--sans); display:none;}
+  .rsvp-msg.show{display:block;}
+  .rsvp-note-line{font-size:12.5px; color:var(--ink-soft); margin-top:26px; line-height:1.7; text-align:center; font-family:var(--sans);}
+
+  /* CLOSING */
+  #closing{position:relative; min-height:64vh; display:flex; align-items:center; justify-content:center; text-align:center; max-width:none; padding:0;}
+  #closing img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
+  #closing .overlay{position:absolute; inset:0; background:rgba(28,26,22,0.4); z-index:1;}
+  #closing .content{position:relative; z-index:2; color:var(--parchment); padding:60px 22px;}
+  #closing h2{font-size:clamp(30px,5vw,44px); font-weight:400; font-family:var(--serif); letter-spacing:0.04em; text-transform:uppercase;}
+  #closing .script{display:block; font-family:var(--script); font-size:clamp(46px,9vw,84px); color:var(--parchment); margin-top:4px; line-height:1;}
+  #closing .meta-row{margin-top:30px; font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:rgba(246,240,227,0.85); display:flex; gap:30px; justify-content:center; flex-wrap:wrap;}
+
+  footer{text-align:center; padding:56px 22px 44px; color:var(--ink-soft); border-top:1px solid var(--line); font-size:14px;}
+  footer .footer-script{font-family:var(--script); font-size:34px; color:var(--ink); margin-bottom:10px;}
+  footer .hashtag{color:var(--clay);}
+  footer .admin-link{display:inline-block; margin-top:24px; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(28,26,22,0.35); border-bottom:1px solid transparent; font-family:var(--sans);}
+  footer .admin-link:hover{color:var(--clay); border-color:var(--clay);}
+
+  /* ================= ADMIN ================= */
+  #rsvp-closed-overlay{position:fixed; inset:0; background:rgba(28,26,22,0.72); z-index:210; display:none; align-items:center; justify-content:center; padding:20px; font-family:var(--sans);}
+  #rsvp-closed-overlay.open{display:flex;}
+  .rsvp-closed-box{background:var(--parchment); padding:46px 36px; max-width:360px; width:100%; text-align:center; border:1px solid var(--line);}
+  .rsvp-closed-box .script{font-size:36px; display:block; margin-bottom:16px; color:var(--ink);}
+  .rsvp-closed-box p{font-size:14px; line-height:1.8; color:var(--ink-soft); margin-bottom:24px; font-weight:400;}
+  .rsvp-closed-box button{background:var(--ink); color:var(--parchment); border:none; padding:13px 32px; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; font-family:var(--serif);}
+
+  #admin-overlay{position:fixed; inset:0; background:rgba(28,26,22,0.7); z-index:200; display:none; align-items:center; justify-content:center; padding:20px; font-family:var(--sans);}
+  #admin-overlay.open{display:flex;}
+  .admin-gate{background:var(--parchment); padding:40px; max-width:340px; width:100%; text-align:center; border:1px solid var(--line);}
+  .admin-gate input{width:100%; padding:13px 14px; margin:18px 0; border:1px solid var(--line); background:#fff; font-family:var(--sans); font-size:16px;}
+  .admin-gate button{width:100%; background:var(--ink); color:var(--parchment); border:none; padding:14px; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; font-family:var(--sans);}
+  .admin-gate .err{color:var(--clay); font-size:12.5px; margin-top:8px; display:none;}
+  #admin-dashboard{position:fixed; inset:0; background:var(--parchment); z-index:150; overflow-y:auto; display:none; font-family:var(--sans);}
+  #admin-dashboard.open{display:block;}
+  .admin-topbar{display:flex; justify-content:space-between; align-items:center; padding:20px 26px; border-bottom:1px solid var(--line); background:var(--parchment); position:sticky; top:0; z-index:5;}
+  .admin-topbar h2{font-family:var(--script); font-size:30px;}
+  .admin-body{padding:26px; max-width:1200px; margin:0 auto;}
+  .admin-cards{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:30px;}
+  @media (min-width:720px){ .admin-cards{grid-template-columns:repeat(5,1fr);} }
+  .admin-card{background:var(--sage); border:1px solid var(--line); padding:20px; text-align:center;}
+  .admin-card .num{font-family:var(--serif); font-size:32px; color:var(--clay);}
+  .admin-card .lbl{font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-soft); margin-top:6px;}
+  .admin-toolbar{display:flex; gap:12px; margin-bottom:16px; flex-wrap:wrap; align-items:center;}
+  .admin-toolbar input{padding:10px 14px; border:1px solid var(--line); font-family:var(--sans); font-size:13px; flex:1; min-width:180px;}
+  .admin-toolbar select{padding:10px 14px; border:1px solid var(--line); font-family:var(--sans); font-size:13px;}
+  .admin-toolbar button{padding:10px 18px; background:var(--ink); color:var(--parchment); border:none; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase;}
+  table.admin-table{width:100%; border-collapse:collapse; font-size:13px;}
+  table.admin-table th{text-align:left; padding:10px 8px; border-bottom:1px solid var(--ink); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); white-space:nowrap;}
+  table.admin-table td{padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top;}
+  table.admin-table input[type=number]{width:52px; padding:5px; border:1px solid var(--line); font-family:var(--sans);}
+  .status-pill{padding:3px 10px; border-radius:20px; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase;}
+  .status-yes{background:#e4ecdf; color:#3e4a38;}
+  .status-no{background:#f2e0da; color:var(--clay);}
+  .status-pending{background:var(--sage); color:var(--ink-soft);}
+  .admin-note{margin-top:34px; padding:16px 18px; border-left:2px solid var(--brass); background:var(--sage); font-size:12.5px; color:var(--ink-soft); line-height:1.8;}
+  .close-x{background:none; border:none; font-size:22px; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<!-- ================= OPENING ENVELOPE ================= -->
+<div id="envelope-screen">
+  <div class="invite-wrap" id="invite-wrap">
+    <div class="envelope">
+      <div class="env-body"></div>
+      <div class="env-wordmark">J&amp;E</div>
+      <div class="env-face"></div>
+      <div class="env-flap" id="env-flap">
+        <div class="env-flap-face env-flap-front"></div>
+        <div class="env-flap-face env-flap-back"></div>
+      </div>
+    </div>
+    <div class="invite-date">10 · 10 · 2026</div>
+    <button class="open-btn" id="open-btn">Open Our Invitation</button>
+  </div>
+</div>
+
+<!-- ================= MAIN SITE ================= -->
+<div id="main-site">
+
+  <nav class="site-nav">
+    <ul class="left">
+      <li><a href="#itinerary">Weekend Events</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#dress-code">Dress Code</a></li>
+    </ul>
+    <a href="#our-story" class="nav-logo">Our Story</a>
+    <ul class="right">
+      <li><a href="#registry">Registry</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+      <li><a href="#faq">Questions</a></li>
+    </ul>
+    <button class="nav-menu-toggle" id="menu-toggle">Menu</button>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#our-story">Our Story</a>
+    <a href="#details">Details</a>
+    <a href="#itinerary">Weekend Events</a>
+    <a href="#stay">Hotel Accommodations</a>
+    <a href="#dress-code">Dress Code</a>
+    <a href="#registry">Registry</a>
+    <a href="#faq">Questions</a>
+    <a href="#rsvp">RSVP</a>
+  </div>
+
+  <!-- HOME -->
+  <section id="home">
+    <video class="hero-bg" autoplay muted loop playsinline poster="/images/hero.jpg">
+      <source src="/videos/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="kicker">You are cordially invited to the wedding of</div>
+      <div class="invite-script">Jessica &amp; Erick</div>
+      <div class="date-line">October the 10th, 2026</div>
+      <div><a href="#rsvp" class="hero-cta">RSVP Now</a></div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section id="countdown" class="full-bleed">
+    <div class="cd-frame">
+      <span class="script">Happily ever after starts in…</span>
+      <div class="countdown-grid">
+        <div><div class="countdown-num" id="cd-days">00</div><div class="countdown-lbl">Days</div></div>
+        <div><div class="countdown-num" id="cd-hours">00</div><div class="countdown-lbl">Hours</div></div>
+        <div><div class="countdown-num" id="cd-mins">00</div><div class="countdown-lbl">Minutes</div></div>
+        <div><div class="countdown-num" id="cd-secs">00</div><div class="countdown-lbl">Seconds</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section id="details" class="tight">
+    <div class="details-grid">
+      <div class="detail-card">
+        <div class="script">Ceremony</div>
+        <h3>Our Lady of Sorrows Catholic Church</h3>
+        <p class="meta">1108 W Hackberry Ave, McAllen, TX 78501<br>Ceremony start time 2:00 PM</p>
+      </div>
+      <div class="detail-card">
+        <div class="script">Reception</div>
+        <h3>Rancho Guadalupe</h3>
+        <p class="meta">3 1/2 Big 5, Edinburg, TX 78541<br>Cocktail hour &amp; reception start time: 4:00 PM</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRESS CODE -->
+  <section id="dress-code" class="tight" style="padding:0;">
+    <div class="sage-panel dress-emphasis">
+      <span class="tracked small dress-flag">Strict Dress Code</span>
+      <div class="script">Dress Code</div>
+      <div class="subtitle">Black Tie Formal</div>
+      <p class="quote">Our celebration is a formal evening affair with a romantic, vintage-inspired ambiance.<br>Guests are kindly requested to dress in black tie or formal attire.<br><br>Think floor-length gowns, tuxedos, or dark tailored suits, styled with timeless elegance and refined details.</p>
+      <p class="no-note">No White or Ivory / Bridal Colors — No Exceptions, Please</p>
+      <a href="https://pin.it/75cl6OVHr" class="book-btn" target="_blank" rel="noopener">Wedding Attire Inspo</a>
+    </div>
+  </section>
+
+  <!-- WEEKEND EVENTS / ITINERARY -->
+  <section id="itinerary" class="tight">
+    <div class="lockup">
+      <span class="script-main script">Wedding</span>
+      <span class="post">Timeline</span>
+    </div>
+    <div class="dot-timeline" id="timeline-list"></div>
+  </section>
+
+  <!-- STAY / HOTEL ACCOMMODATIONS -->
+  <section id="stay" class="tight" style="padding:0;">
+    <div class="sage-panel">
+      <div class="script">Hotel Accomodations</div>
+      <p class="meta">BEST WESTERN<br>1500 Wichita Ave, McAllen, TX 78503<br>(956) 632-2000<br><em>"Booking for the Ochoa Wedding"</em></p>
+      <a href="https://www.bestwestern.com/en_US/book/hotels-in-mcallen/best-western-plus-mcallen-airport-hotel/propertyCode.44769.html" class="book-btn" target="_blank" rel="noopener">Book Here</a>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section id="our-story" class="tight">
+    <div class="lockup">
+      <span class="post" style="margin-top:0;">Our</span>
+      <span class="script-main script">Love Story</span>
+    </div>
+    <div class="story-grid">
+      <div>
+        <img class="story-photo" src="/images/story.jpg" alt="Jessica and Erick in a field">
+        <div class="torn-note">
+          <span class="clip">📎</span>
+          <div class="fam">The Ochoas</div>
+          <div class="fdate">10.10.2026</div>
+        </div>
+      </div>
+      <div class="story-copy">
+        <p>Erick and Jessica's love story is one guided by God's grace and perfect timing. What began as a simple connection quickly became a deep and lasting bond, rooted in faith, friendship, and purpose.</p>
+        <p>Their relationship has been shaped not only by joy and laughter, but by prayer, perseverance, and a shared commitment to place Christ at the center of their lives.</p>
+        <p>As they begin this new chapter, Erick and Jessica do so with grateful hearts, honoring God for bringing them together and for the love they now choose each day.</p>
+        <p>They look forward to building a marriage founded on faith, guided by love, and strengthened by God's promises.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="tight">
+    <div class="inner">
+      <span class="script">Questions About Event</span>
+      <div class="faq-grid" id="faq-list"></div>
+    </div>
+  </section>
+
+  <!-- REGISTRY / HONEYMOON FUND -->
+  <section id="registry">
+    <span class="script">Honeymoon Fund</span>
+    <p class="sub">Your presence at our wedding is the greatest gift we could ask for. But if you wish to honor us with something more, a contribution to our honeymoon fund would help us create lasting memories as newlyweds.<br><br>We can't wait to start this next adventure together and we'll think of you with gratitude every step of the way.</p>
+    <div class="registry-info">
+      <div class="line"><b>Zelle</b> — 956.735.5424</div>
+      <div class="line"><b>CashApp</b> — $EEOCHOA3</div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp">
+    <span class="script">Please RSVP</span>
+    <svg class="scroll-divider" viewBox="0 0 220 16"><line x1="0" y1="8" x2="220" y2="8" stroke="#1c1a16" stroke-width="1"/><circle cx="110" cy="8" r="4" fill="none" stroke="#1c1a16" stroke-width="1"/></svg>
+    <p class="rsvp-deadline">By 09 · 10 · 2026</p>
+    <p class="rsvp-kids">We'll miss you if we don't hear from you — RSVPs close September 10, 2026.</p>
+    <p class="sub">We can't wait to celebrate this special day with you! Kindly fill out the RSVP form below. We hope to see you there.</p>
+    <p class="rsvp-no-kids">No Kids Allowed</p>
+
+    <div class="rsvp-box">
+      <p class="field-label">Please select your name from the guest list below</p>
+      <div class="search-wrap">
+        <input type="text" class="rsvp-input" id="guest-search" placeholder="Start typing your name…" autocomplete="off">
+        <div class="dropdown-list" id="guest-dropdown"></div>
+      </div>
+
+      <div class="seat-note" id="seat-note" style="display:none;"></div>
+
+      <div class="rsvp-form" id="rsvp-form">
+        <div>
+          <span class="field-label">Will you be attending?</span>
+          <div class="attend-toggle">
+            <button type="button" data-val="yes" id="attend-yes">Joyfully Accept</button>
+            <button type="button" data-val="no" id="attend-no">Regretfully Decline</button>
+          </div>
+        </div>
+
+        <button class="submit-btn" id="rsvp-submit">Submit RSVP</button>
+      </div>
+
+      <div class="rsvp-msg" id="rsvp-msg"></div>
+      <p class="rsvp-note-line">Each guest RSVPs individually — please search and submit your own name, even if you're coming with someone else on the list. Already responded? Search your name again to view or update your RSVP.</p>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section id="closing">
+    <img src="/images/closing.jpg" alt="Jessica and Erick lying in a field">
+    <div class="overlay"></div>
+    <div class="content">
+      <h2>We can't wait to</h2>
+      <span class="script">Celebrate with you!</span>
+      <div class="meta-row"><span>10.10.2026</span><span>Edinburg, TX</span></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <a href="#" class="admin-link" id="open-admin">Admin</a>
+  </footer>
+</div>
+
+<!-- ================= ADMIN GATE ================= -->
+
+<div id="rsvp-closed-overlay">
+  <div class="rsvp-closed-box">
+    <span class="script">We'll Miss You</span>
+    <p>RSVPs closed on September 10, 2026 and are no longer being accepted. Please reach out to Jessica &amp; Erick directly at meettheochoas@gmail.com if you have questions.</p>
+    <button id="close-rsvp-closed">Close</button>
+  </div>
+</div>
+<div id="admin-overlay">
+  <div class="admin-gate">
+    <span class="tracked small">Private</span>
+    <h2 style="font-family:var(--script); font-size:36px; margin-top:6px;">Admin Access</h2>
+    <input type="password" id="admin-password" placeholder="Enter password">
+    <button id="admin-login">Enter Dashboard</button>
+    <p class="err" id="admin-err">Incorrect password — try again.</p>
+    <p style="font-size:11px;color:var(--ink-soft);margin-top:16px;">Enter the admin password set in your environment configuration.</p>
+  </div>
+</div>
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+<div id="admin-dashboard">
+  <div class="admin-topbar">
+    <h2>RSVP Dashboard</h2>
+    <button class="close-x" id="close-admin">✕</button>
+  </div>
+  <div class="admin-body">
+    <div class="admin-cards" id="admin-cards"></div>
+    <div class="admin-toolbar">
+      <input type="text" id="admin-search" placeholder="Search guests…">
+      <select id="admin-filter">
+        <option value="all">All</option>
+        <option value="attending">Attending</option>
+        <option value="declining">Declining</option>
+        <option value="pending">Awaiting Response</option>
+      </select>
+      <button id="admin-export">Export CSV</button>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Guest</th><th>Status</th><th>Submitted</th>
+          </tr>
+        </thead>
+        <tbody id="admin-tbody"></tbody>
+      </table>
+    </div>
+    <div class="admin-note">
+      This dashboard reads live from your Supabase database. Every RSVP submitted on the site is saved here permanently and also emails meettheochoas@gmail.com automatically via Resend.
+    </div>
+  </div>
+</div>
+
+<script>
+const GUESTS = [{"id": "g001", "first": "Monica", "last": "Lozano", "display": "Monica Lozano", "display_unique": "Monica Lozano"}, {"id": "g002", "first": "Gerardo", "last": "Lozano", "display": "Gerardo Lozano", "display_unique": "Gerardo Lozano"}, {"id": "g003", "first": "Monica Anahi", "last": "Perez", "display": "Monica Anahi Perez", "display_unique": "Monica Anahi Perez"}, {"id": "g004", "first": "Geronimo", "last": "Perez", "display": "Geronimo Perez", "display_unique": "Geronimo Perez"}, {"id": "g005", "first": "Allen", "last": "Lozano", "display": "Allen Lozano", "display_unique": "Allen Lozano"}, {"id": "g006", "first": "Anaysa", "last": "Lozano", "display": "Anaysa Lozano", "display_unique": "Anaysa Lozano"}, {"id": "g258", "first": "Velia", "last": "Lozano", "display": "Velia Lozano", "display_unique": "Velia Lozano"}, {"id": "g012", "first": "Aaron", "last": "Lozano", "display": "Aaron Lozano", "display_unique": "Aaron Lozano (1)"}, {"id": "g259", "first": "Pinita", "last": "Lozano", "display": "Pinita Lozano", "display_unique": "Pinita Lozano"}, {"id": "g010", "first": "Sara", "last": "Lozano", "display": "Sara Lozano", "display_unique": "Sara Lozano"}, {"id": "g011", "first": "Michael", "last": "Lyon", "display": "Michael Lyon", "display_unique": "Michael Lyon"}, {"id": "g260", "first": "Aaron", "last": "Lozano", "display": "Aaron Lozano", "display_unique": "Aaron Lozano (2)"}, {"id": "g019", "first": "Carlos", "last": "Lozano", "display": "Carlos Lozano", "display_unique": "Carlos Lozano (1)"}, {"id": "g261", "first": "Olivia", "last": "Lozano", "display": "Olivia Lozano", "display_unique": "Olivia Lozano"}, {"id": "g015", "first": "Lillian", "last": "Marquez - Lozano", "display": "Lillian Marquez - Lozano", "display_unique": "Lillian Marquez - Lozano"}, {"id": "g016", "first": "Angel", "last": "Marquez", "display": "Angel Marquez", "display_unique": "Angel Marquez"}, {"id": "g017", "first": "Oli", "last": "Ibarra - Lozano", "display": "Oli Ibarra - Lozano", "display_unique": "Oli Ibarra - Lozano"}, {"id": "g018", "first": "Sergio", "last": "Ibarra", "display": "Sergio Ibarra", "display_unique": "Sergio Ibarra"}, {"id": "g262", "first": "Carlos", "last": "Lozano", "display": "Carlos Lozano", "display_unique": "Carlos Lozano (2)"}, {"id": "g263", "first": "Arturo", "last": "Lozano", "display": "Arturo Lozano", "display_unique": "Arturo Lozano"}, {"id": "g021", "first": "Dietric", "last": "Lozano", "display": "Dietric Lozano", "display_unique": "Dietric Lozano"}, {"id": "g022", "first": "Jessica", "last": "De Luna", "display": "Jessica De Luna", "display_unique": "Jessica De Luna"}, {"id": "g023", "first": "Oriol", "last": "Zertuche", "display": "Oriol Zertuche", "display_unique": "Oriol Zertuche"}, {"id": "g264", "first": "Roberto", "last": "Montemayor", "display": "Roberto Montemayor", "display_unique": "Roberto Montemayor"}, {"id": "g265", "first": "Gloria", "last": "Montemayor", "display": "Gloria Montemayor", "display_unique": "Gloria Montemayor"}, {"id": "g026", "first": "Leslie", "last": "Montemayor", "display": "Leslie Montemayor", "display_unique": "Leslie Montemayor"}, {"id": "g027", "first": "Christian", "last": "Montemayor", "display": "Christian Montemayor", "display_unique": "Christian Montemayor"}, {"id": "g028", "first": "tal-or Cohen", "last": "Montemayor", "display": "tal-or Cohen Montemayor", "display_unique": "tal-or Cohen Montemayor"}, {"id": "g266", "first": "Norma", "last": "Morales", "display": "Norma Morales", "display_unique": "Norma Morales"}, {"id": "g032", "first": "Manuel", "last": "Morales", "display": "Manuel Morales", "display_unique": "Manuel Morales"}, {"id": "g031", "first": "Andrea", "last": "Morales", "display": "Andrea Morales", "display_unique": "Andrea Morales"}, {"id": "g267", "first": "Manuel", "last": "Morales Jr", "display": "Manuel Morales Jr", "display_unique": "Manuel Morales Jr"}, {"id": "g268", "first": "Edmundo", "last": "Berain", "display": "Edmundo Berain", "display_unique": "Edmundo Berain"}, {"id": "g269", "first": "Concepcion", "last": "Berain", "display": "Concepcion Berain", "display_unique": "Concepcion Berain"}, {"id": "g270", "first": "Harumy", "last": "Villarreal", "display": "Harumy Villarreal", "display_unique": "Harumy Villarreal"}, {"id": "g036", "first": "Gerardo", "last": "Villarreal", "display": "Gerardo Villarreal", "display_unique": "Gerardo Villarreal"}, {"id": "g271", "first": "Gerardo", "last": "Villarreal Jr.", "display": "Gerardo Villarreal Jr.", "display_unique": "Gerardo Villarreal Jr."}, {"id": "g038", "first": "Rebecca", "last": "Villarreal", "display": "Rebecca Villarreal", "display_unique": "Rebecca Villarreal"}, {"id": "g272", "first": "Marcos", "last": "Villarreal", "display": "Marcos Villarreal", "display_unique": "Marcos Villarreal"}, {"id": "g273", "first": "Edmundo", "last": "Berain Jr.", "display": "Edmundo Berain Jr.", "display_unique": "Edmundo Berain Jr."}, {"id": "g041", "first": "Alejandra", "last": "Berain", "display": "Alejandra Berain", "display_unique": "Alejandra Berain"}, {"id": "g042", "first": "Mundito", "last": "Berain", "display": "Mundito Berain", "display_unique": "Mundito Berain"}, {"id": "g043", "first": "Sebastian", "last": "Berain", "display": "Sebastian Berain", "display_unique": "Sebastian Berain"}, {"id": "g044", "first": "Regina", "last": "Zamacona-Talavera", "display": "Regina Zamacona-Talavera", "display_unique": "Regina Zamacona-Talavera"}, {"id": "g045", "first": "Sergio", "last": "Talavera", "display": "Sergio Talavera", "display_unique": "Sergio Talavera"}, {"id": "g046", "first": "Julian", "last": "Whitacre", "display": "Julian Whitacre", "display_unique": "Julian Whitacre"}, {"id": "g047", "first": "Brenda", "last": "Lopez", "display": "Brenda Lopez", "display_unique": "Brenda Lopez"}, {"id": "g048", "first": "Andrew", "last": "Hernandez", "display": "Andrew Hernandez", "display_unique": "Andrew Hernandez"}, {"id": "g049", "first": "Valerie", "last": "Lopez", "display": "Valerie Lopez", "display_unique": "Valerie Lopez"}, {"id": "g050", "first": "Caleb", "last": "Navarro", "display": "Caleb Navarro", "display_unique": "Caleb Navarro"}, {"id": "g274", "first": "Pat", "last": "Rivera", "display": "Pat Rivera", "display_unique": "Pat Rivera"}, {"id": "g275", "first": "Edward", "last": "Rivera", "display": "Edward Rivera", "display_unique": "Edward Rivera"}, {"id": "g276", "first": "Marisa", "last": "Martinez", "display": "Marisa Martinez", "display_unique": "Marisa Martinez"}, {"id": "g277", "first": "Euly", "last": "Martinez", "display": "Euly Martinez", "display_unique": "Euly Martinez"}, {"id": "g055", "first": "Carol", "last": "Escobedo", "display": "Carol Escobedo", "display_unique": "Carol Escobedo"}, {"id": "g056", "first": "Mando", "last": "Escobedo", "display": "Mando Escobedo", "display_unique": "Mando Escobedo"}, {"id": "g057", "first": "Lucia", "last": "Tello", "display": "Lucia Tello", "display_unique": "Lucia Tello"}, {"id": "g058", "first": "Consuelo", "last": "Jones", "display": "Consuelo Jones", "display_unique": "Consuelo Jones"}, {"id": "g278", "first": "Lizzet", "last": "Mora", "display": "Lizzet Mora", "display_unique": "Lizzet Mora"}, {"id": "g059", "first": "Karen", "last": "Henson", "display": "Karen Henson", "display_unique": "Karen Henson"}, {"id": "g279", "first": "Dr. Zachary L.", "last": "Henson", "display": "Dr. Zachary L. Henson", "display_unique": "Dr. Zachary L. Henson"}, {"id": "g061", "first": "Arturo", "last": "Villegas", "display": "Arturo Villegas", "display_unique": "Arturo Villegas"}, {"id": "g062", "first": "Cynthia", "last": "Alvarez", "display": "Cynthia Alvarez", "display_unique": "Cynthia Alvarez"}, {"id": "g063", "first": "Danny", "last": "Tijerina", "display": "Danny Tijerina", "display_unique": "Danny Tijerina"}, {"id": "g064", "first": "Andrea", "last": "Alvarez", "display": "Andrea Alvarez", "display_unique": "Andrea Alvarez"}, {"id": "g065", "first": "Daniela", "last": "Tijerina", "display": "Daniela Tijerina", "display_unique": "Daniela Tijerina"}, {"id": "g066", "first": "Ranjit", "last": "Singh", "display": "Ranjit Singh", "display_unique": "Ranjit Singh"}, {"id": "g067", "first": "Laurie", "last": "Singh", "display": "Laurie Singh", "display_unique": "Laurie Singh"}, {"id": "g068", "first": "Katie", "last": "Pagan", "display": "Katie Pagan", "display_unique": "Katie Pagan"}, {"id": "g069", "first": "Vicente", "last": "Cortes", "display": "Vicente Cortes", "display_unique": "Vicente Cortes"}, {"id": "g070", "first": "Alexandra", "last": "Hernandez", "display": "Alexandra Hernandez", "display_unique": "Alexandra Hernandez"}, {"id": "g071", "first": "Michael", "last": "Ochoa", "display": "Michael Ochoa", "display_unique": "Michael Ochoa"}, {"id": "g280", "first": "Sarah", "last": "Ochoa", "display": "Sarah Ochoa", "display_unique": "Sarah Ochoa"}, {"id": "g073", "first": "Geneva", "last": "Cantu", "display": "Geneva Cantu", "display_unique": "Geneva Cantu"}, {"id": "g074", "first": "Norma", "last": "Ochoa", "display": "Norma Ochoa", "display_unique": "Norma Ochoa"}, {"id": "g075", "first": "Jorge", "last": "Ochoa", "display": "Jorge Ochoa", "display_unique": "Jorge Ochoa"}, {"id": "g281", "first": "Jorge", "last": "Ochoa Jr", "display": "Jorge Ochoa Jr", "display_unique": "Jorge Ochoa Jr"}, {"id": "g077", "first": "Mirtha", "last": "Ochoa", "display": "Mirtha Ochoa", "display_unique": "Mirtha Ochoa"}, {"id": "g078", "first": "Randy", "last": "Ochoa", "display": "Randy Ochoa", "display_unique": "Randy Ochoa"}, {"id": "g079", "first": "Stephanie", "last": "Ochoa", "display": "Stephanie Ochoa", "display_unique": "Stephanie Ochoa"}, {"id": "g080", "first": "Irma", "last": "Rodriguez", "display": "Irma Rodriguez", "display_unique": "Irma Rodriguez (1)"}, {"id": "g081", "first": "Ramon", "last": "Rodriguez", "display": "Ramon Rodriguez", "display_unique": "Ramon Rodriguez (1)"}, {"id": "g082", "first": "Juan", "last": "Ochoa", "display": "Juan Ochoa", "display_unique": "Juan Ochoa"}, {"id": "g083", "first": "Alma", "last": "Ochoa", "display": "Alma Ochoa", "display_unique": "Alma Ochoa"}, {"id": "g084", "first": "Kathya", "last": "Valladares", "display": "Kathya Valladares", "display_unique": "Kathya Valladares"}, {"id": "g085", "first": "Tony", "last": "Valladares", "display": "Tony Valladares", "display_unique": "Tony Valladares"}, {"id": "g086", "first": "Jaime", "last": "Ochoa", "display": "Jaime Ochoa", "display_unique": "Jaime Ochoa"}, {"id": "g087", "first": "Deli", "last": "Ochoa", "display": "Deli Ochoa", "display_unique": "Deli Ochoa"}, {"id": "g282", "first": "Jaime", "last": "Ochoa Jr", "display": "Jaime Ochoa Jr", "display_unique": "Jaime Ochoa Jr"}, {"id": "g089", "first": "Priscilla", "last": "Ochoa", "display": "Priscilla Ochoa", "display_unique": "Priscilla Ochoa (1)"}, {"id": "g090", "first": "Ivan", "last": "Ochoa", "display": "Ivan Ochoa", "display_unique": "Ivan Ochoa"}, {"id": "g091", "first": "Denise", "last": "Ochoa", "display": "Denise Ochoa", "display_unique": "Denise Ochoa"}, {"id": "g092", "first": "Priscilla", "last": "Ochoa", "display": "Priscilla Ochoa", "display_unique": "Priscilla Ochoa (2)"}, {"id": "g093", "first": "Rosalinda", "last": "Rodriguez", "display": "Rosalinda Rodriguez", "display_unique": "Rosalinda Rodriguez"}, {"id": "g094", "first": "Manuel", "last": "Rodriguez", "display": "Manuel Rodriguez", "display_unique": "Manuel Rodriguez"}, {"id": "g095", "first": "Manuel", "last": "Rodriguez Jr", "display": "Manuel Rodriguez Jr", "display_unique": "Manuel Rodriguez Jr"}, {"id": "g096", "first": "Daisy", "last": "Marquez", "display": "Daisy Marquez", "display_unique": "Daisy Marquez"}, {"id": "g097", "first": "Max", "last": "Marquez", "display": "Max Marquez", "display_unique": "Max Marquez"}, {"id": "g098", "first": "Glendy", "last": "Rodriguez", "display": "Glendy Rodriguez", "display_unique": "Glendy Rodriguez"}, {"id": "g099", "first": "Tony", "last": "Martinez", "display": "Tony Martinez", "display_unique": "Tony Martinez"}, {"id": "g100", "first": "Hugo", "last": "Ochoa", "display": "Hugo Ochoa", "display_unique": "Hugo Ochoa"}, {"id": "g101", "first": "Isabel", "last": "Ochoa", "display": "Isabel Ochoa", "display_unique": "Isabel Ochoa"}, {"id": "g102", "first": "Alexis", "last": "Ochoa", "display": "Alexis Ochoa", "display_unique": "Alexis Ochoa"}, {"id": "g103", "first": "Alexia", "last": "Garcia", "display": "Alexia Garcia", "display_unique": "Alexia Garcia"}, {"id": "g104", "first": "Arnie", "last": "Garcia", "display": "Arnie Garcia", "display_unique": "Arnie Garcia"}, {"id": "g105", "first": "Lee Roy", "last": "Ochoa", "display": "Lee Roy Ochoa", "display_unique": "Lee Roy Ochoa"}, {"id": "g106", "first": "Liana", "last": "Ochoa", "display": "Liana Ochoa", "display_unique": "Liana Ochoa"}, {"id": "g107", "first": "Olga", "last": "Trevino", "display": "Olga Trevino", "display_unique": "Olga Trevino"}, {"id": "g108", "first": "Randy", "last": "Trevino", "display": "Randy Trevino", "display_unique": "Randy Trevino"}, {"id": "g109", "first": "Nirel", "last": "Boley", "display": "Nirel Boley", "display_unique": "Nirel Boley"}, {"id": "g110", "first": "Elliot", "last": "Boley", "display": "Elliot Boley", "display_unique": "Elliot Boley"}, {"id": "g111", "first": "Brissia", "last": "Trevino", "display": "Brissia Trevino", "display_unique": "Brissia Trevino"}, {"id": "g112", "first": "Marisa", "last": "Diaz", "display": "Marisa Diaz", "display_unique": "Marisa Diaz"}, {"id": "g113", "first": "Fernando", "last": "Diaz", "display": "Fernando Diaz", "display_unique": "Fernando Diaz"}, {"id": "g114", "first": "Evelyn", "last": "Diaz", "display": "Evelyn Diaz", "display_unique": "Evelyn Diaz"}, {"id": "g115", "first": "Christian", "last": "Cortinas", "display": "Christian Cortinas", "display_unique": "Christian Cortinas"}, {"id": "g116", "first": "Marlen", "last": "Diaz", "display": "Marlen Diaz", "display_unique": "Marlen Diaz"}, {"id": "g117", "first": "Jaime", "last": "Rodriguez", "display": "Jaime Rodriguez", "display_unique": "Jaime Rodriguez"}, {"id": "g118", "first": "Angelica", "last": "Rodriguez", "display": "Angelica Rodriguez", "display_unique": "Angelica Rodriguez"}, {"id": "g119", "first": "Citlali", "last": "Rodriguez", "display": "Citlali Rodriguez", "display_unique": "Citlali Rodriguez"}, {"id": "g283", "first": "Daniel", "last": "Campos", "display": "Daniel Campos", "display_unique": "Daniel Campos"}, {"id": "g121", "first": "Luis Alberto", "last": "Rodriguez", "display": "Luis Alberto Rodriguez", "display_unique": "Luis Alberto Rodriguez"}, {"id": "g122", "first": "Irma", "last": "Alvarez", "display": "Irma Alvarez", "display_unique": "Irma Alvarez"}, {"id": "g123", "first": "Leonel", "last": "Rodriguez", "display": "Leonel Rodriguez", "display_unique": "Leonel Rodriguez"}, {"id": "g124", "first": "Irma", "last": "Rodriguez", "display": "Irma Rodriguez", "display_unique": "Irma Rodriguez (2)"}, {"id": "g125", "first": "Leonela", "last": "Rodriguez", "display": "Leonela Rodriguez", "display_unique": "Leonela Rodriguez"}, {"id": "g126", "first": "Ramon", "last": "Rodriguez", "display": "Ramon Rodriguez", "display_unique": "Ramon Rodriguez (2)"}, {"id": "g127", "first": "Olga", "last": "Rodriguez", "display": "Olga Rodriguez", "display_unique": "Olga Rodriguez"}, {"id": "g284", "first": "Juan Carlos", "last": "Ojeda", "display": "Juan Carlos Ojeda", "display_unique": "Juan Carlos Ojeda"}, {"id": "g285", "first": "Yadira", "last": "Garza", "display": "Yadira Garza", "display_unique": "Yadira Garza"}, {"id": "g286", "first": "Juan Carlos", "last": "Ojeda Jr", "display": "Juan Carlos Ojeda Jr", "display_unique": "Juan Carlos Ojeda Jr"}, {"id": "g287", "first": "Karina", "last": "Ojeda", "display": "Karina Ojeda", "display_unique": "Karina Ojeda"}, {"id": "g288", "first": "Orlando", "last": "Lopez", "display": "Orlando Lopez", "display_unique": "Orlando Lopez"}, {"id": "g289", "first": "Nancy", "last": "Lopez", "display": "Nancy Lopez", "display_unique": "Nancy Lopez"}, {"id": "g290", "first": "Adamari", "last": "Lopez", "display": "Adamari Lopez", "display_unique": "Adamari Lopez"}, {"id": "g128", "first": "Alejandro", "last": "Padron", "display": "Alejandro Padron", "display_unique": "Alejandro Padron"}, {"id": "g129", "first": "Cassandra", "last": "Padron", "display": "Cassandra Padron", "display_unique": "Cassandra Padron"}, {"id": "g130", "first": "Sergio", "last": "Garcia", "display": "Sergio Garcia", "display_unique": "Sergio Garcia"}, {"id": "g131", "first": "Theresa", "last": "Garcia", "display": "Theresa Garcia", "display_unique": "Theresa Garcia"}, {"id": "g132", "first": "Joel", "last": "Barrera", "display": "Joel Barrera", "display_unique": "Joel Barrera"}, {"id": "g133", "first": "Samantha", "last": "Barrera", "display": "Samantha Barrera", "display_unique": "Samantha Barrera"}, {"id": "g134", "first": "William", "last": "Eveland", "display": "William Eveland", "display_unique": "William Eveland"}, {"id": "g135", "first": "Dennis", "last": "Hernandez", "display": "Dennis Hernandez", "display_unique": "Dennis Hernandez"}, {"id": "g136", "first": "Aaron", "last": "Hernandez", "display": "Aaron Hernandez", "display_unique": "Aaron Hernandez"}, {"id": "g137", "first": "Alejandra", "last": "Hernandez", "display": "Alejandra Hernandez", "display_unique": "Alejandra Hernandez"}, {"id": "g138", "first": "Gabriel", "last": "Hernandez", "display": "Gabriel Hernandez", "display_unique": "Gabriel Hernandez"}, {"id": "g139", "first": "Marissa", "last": "Martinez", "display": "Marissa Martinez", "display_unique": "Marissa Martinez"}, {"id": "g140", "first": "Lucy", "last": "Mireles", "display": "Lucy Mireles", "display_unique": "Lucy Mireles"}, {"id": "g291", "first": "Betise", "last": "Valdes", "display": "Betise Valdes", "display_unique": "Betise Valdes"}, {"id": "g292", "first": "Gerardo", "last": "Valdes", "display": "Gerardo Valdes", "display_unique": "Gerardo Valdes"}, {"id": "g143", "first": "Claudia", "last": "Chavarria", "display": "Claudia Chavarria", "display_unique": "Claudia Chavarria"}, {"id": "g144", "first": "Leopoldo", "last": "Chavarria", "display": "Leopoldo Chavarria", "display_unique": "Leopoldo Chavarria"}, {"id": "g145", "first": "Yolanda", "last": "Flores", "display": "Yolanda Flores", "display_unique": "Yolanda Flores"}, {"id": "g146", "first": "Carlos", "last": "Flores", "display": "Carlos Flores", "display_unique": "Carlos Flores"}, {"id": "g147", "first": "Marisa", "last": "Santacruz", "display": "Marisa Santacruz", "display_unique": "Marisa Santacruz"}, {"id": "g148", "first": "Jose", "last": "Santacruz", "display": "Jose Santacruz", "display_unique": "Jose Santacruz"}, {"id": "g149", "first": "Martha", "last": "Chavarria", "display": "Martha Chavarria", "display_unique": "Martha Chavarria"}, {"id": "g150", "first": "Juan Ramon", "last": "Chavarria", "display": "Juan Ramon Chavarria", "display_unique": "Juan Ramon Chavarria"}, {"id": "g151", "first": "Graciela", "last": "Cardenas", "display": "Graciela Cardenas", "display_unique": "Graciela Cardenas"}, {"id": "g152", "first": "Jaime", "last": "Cardenas", "display": "Jaime Cardenas", "display_unique": "Jaime Cardenas"}, {"id": "g153", "first": "Eloisa", "last": "Flores", "display": "Eloisa Flores", "display_unique": "Eloisa Flores"}, {"id": "g154", "first": "Rodrigo", "last": "Flores", "display": "Rodrigo Flores", "display_unique": "Rodrigo Flores"}, {"id": "g155", "first": "Juliana", "last": "Garcia", "display": "Juliana Garcia", "display_unique": "Juliana Garcia"}, {"id": "g156", "first": "Bobby", "last": "Garcia", "display": "Bobby Garcia", "display_unique": "Bobby Garcia"}, {"id": "g157", "first": "Mirthala", "last": "Velazquez", "display": "Mirthala Velazquez", "display_unique": "Mirthala Velazquez"}, {"id": "g158", "first": "Roberto", "last": "Velazquez", "display": "Roberto Velazquez", "display_unique": "Roberto Velazquez"}, {"id": "g159", "first": "Veronica", "last": "Whitacre", "display": "Veronica Whitacre", "display_unique": "Veronica Whitacre"}, {"id": "g160", "first": "Michael", "last": "Whitacre", "display": "Michael Whitacre", "display_unique": "Michael Whitacre"}, {"id": "g161", "first": "Elizabeth", "last": "Govea", "display": "Elizabeth Govea", "display_unique": "Elizabeth Govea"}, {"id": "g162", "first": "Irasema", "last": "Gonzalez", "display": "Irasema Gonzalez", "display_unique": "Irasema Gonzalez"}, {"id": "g293", "first": "Armando", "last": "Salinas", "display": "Armando Salinas", "display_unique": "Armando Salinas"}, {"id": "g164", "first": "Arlene", "last": "Cazares", "display": "Arlene Cazares", "display_unique": "Arlene Cazares"}, {"id": "g165", "first": "Paloma", "last": "Herrera", "display": "Paloma Herrera", "display_unique": "Paloma Herrera"}, {"id": "g166", "first": "Ruben", "last": "Herrera", "display": "Ruben Herrera", "display_unique": "Ruben Herrera"}, {"id": "g167", "first": "Alicia", "last": "Gonzalez", "display": "Alicia Gonzalez", "display_unique": "Alicia Gonzalez"}, {"id": "g168", "first": "Lorena", "last": "de Los Santos", "display": "Lorena de Los Santos", "display_unique": "Lorena de Los Santos"}, {"id": "g294", "first": "Christian", "last": "Valdes", "display": "Christian Valdes", "display_unique": "Christian Valdes"}, {"id": "g295", "first": "Laura", "last": "Salas", "display": "Laura Salas", "display_unique": "Laura Salas"}, {"id": "g296", "first": "Diego", "last": "Valdes", "display": "Diego Valdes", "display_unique": "Diego Valdes"}, {"id": "g297", "first": "Betisita", "last": "Valdes", "display": "Betisita Valdes", "display_unique": "Betisita Valdes"}, {"id": "g298", "first": "Maria Angela", "last": "Davila", "display": "Maria Angela Davila", "display_unique": "Maria Angela Davila"}, {"id": "g174", "first": "Taylor", "last": "Crowe-Elliot", "display": "Taylor Crowe-Elliot", "display_unique": "Taylor Crowe-Elliot"}, {"id": "g175", "first": "John", "last": "Elliot", "display": "John Elliot", "display_unique": "John Elliot"}, {"id": "g176", "first": "Magdalena", "last": "Muñoz", "display": "Magdalena Muñoz", "display_unique": "Magdalena Muñoz"}, {"id": "g177", "first": "Jasmine", "last": "Ochoa", "display": "Jasmine Ochoa", "display_unique": "Jasmine Ochoa"}, {"id": "g178", "first": "Melanie", "last": "Ochoa", "display": "Melanie Ochoa", "display_unique": "Melanie Ochoa"}, {"id": "g299", "first": "Lucas Mateo", "last": "Perez", "display": "Lucas Mateo Perez", "display_unique": "Lucas Mateo Perez"}, {"id": "g180", "first": "Valeria", "last": "Lara", "display": "Valeria Lara", "display_unique": "Valeria Lara"}, {"id": "g181", "first": "Jaryd", "last": "Lara", "display": "Jaryd Lara", "display_unique": "Jaryd Lara"}, {"id": "g182", "first": "Paloma", "last": "Scherwin", "display": "Paloma Scherwin", "display_unique": "Paloma Scherwin"}, {"id": "g183", "first": "Hale", "last": "Schwerin", "display": "Hale Schwerin", "display_unique": "Hale Schwerin"}, {"id": "g184", "first": "Chase Darshan", "last": "Alpha", "display": "Chase Darshan Alpha", "display_unique": "Chase Darshan Alpha"}, {"id": "g185", "first": "Sage", "last": "Alpha", "display": "Sage Alpha", "display_unique": "Sage Alpha"}, {"id": "g186", "first": "Andy", "last": "Zuniga", "display": "Andy Zuniga", "display_unique": "Andy Zuniga"}, {"id": "g187", "first": "Cecilia", "last": "Zuniga", "display": "Cecilia Zuniga", "display_unique": "Cecilia Zuniga"}, {"id": "g188", "first": "Leticia", "last": "Cantu", "display": "Leticia Cantu", "display_unique": "Leticia Cantu"}, {"id": "g189", "first": "Henry", "last": "Cantu", "display": "Henry Cantu", "display_unique": "Henry Cantu"}, {"id": "g190", "first": "David", "last": "Garcia", "display": "David Garcia", "display_unique": "David Garcia"}, {"id": "g191", "first": "Alexis", "last": "Velazques", "display": "Alexis Velazques", "display_unique": "Alexis Velazques"}, {"id": "g192", "first": "Sergio", "last": "Gonzalez", "display": "Sergio Gonzalez", "display_unique": "Sergio Gonzalez"}, {"id": "g193", "first": "Elsa", "last": "Gonzalez", "display": "Elsa Gonzalez", "display_unique": "Elsa Gonzalez"}, {"id": "g194", "first": "Evita", "last": "Flores", "display": "Evita Flores", "display_unique": "Evita Flores"}, {"id": "g195", "first": "Arturo", "last": "Flores", "display": "Arturo Flores", "display_unique": "Arturo Flores"}, {"id": "g196", "first": "Leonel", "last": "Sanchez", "display": "Leonel Sanchez", "display_unique": "Leonel Sanchez"}, {"id": "g197", "first": "Eugenia", "last": "Sanchez", "display": "Eugenia Sanchez", "display_unique": "Eugenia Sanchez"}, {"id": "g198", "first": "Emma", "last": "Trevino de los santos", "display": "Emma Trevino de los santos", "display_unique": "Emma Trevino de los santos"}, {"id": "g300", "first": "Guillermo", "last": "De Los Santos", "display": "Guillermo De Los Santos", "display_unique": "Guillermo De Los Santos"}, {"id": "g200", "first": "Walter", "last": "Verdugo", "display": "Walter Verdugo", "display_unique": "Walter Verdugo"}, {"id": "g201", "first": "Alma", "last": "Casarez", "display": "Alma Casarez", "display_unique": "Alma Casarez"}, {"id": "g202", "first": "Guadalupe", "last": "Garza", "display": "Guadalupe Garza", "display_unique": "Guadalupe Garza"}, {"id": "g203", "first": "Andres", "last": "Zuniga", "display": "Andres Zuniga", "display_unique": "Andres Zuniga"}, {"id": "g204", "first": "Cariño", "last": "Zuniga", "display": "Cariño Zuniga", "display_unique": "Cariño Zuniga"}, {"id": "g205", "first": "Oscar", "last": "Gonzalez", "display": "Oscar Gonzalez", "display_unique": "Oscar Gonzalez"}, {"id": "g206", "first": "Guadalupe", "last": "Arias", "display": "Guadalupe Arias", "display_unique": "Guadalupe Arias"}, {"id": "g207", "first": "Rick", "last": "Benavidez", "display": "Rick Benavidez", "display_unique": "Rick Benavidez"}, {"id": "g208", "first": "Joanne", "last": "Benavidez", "display": "Joanne Benavidez", "display_unique": "Joanne Benavidez"}, {"id": "g209", "first": "Javier", "last": "Aldape", "display": "Javier Aldape", "display_unique": "Javier Aldape"}, {"id": "g210", "first": "Patricia", "last": "Aldape", "display": "Patricia Aldape", "display_unique": "Patricia Aldape"}, {"id": "g211", "first": "Stephanie", "last": "Smith", "display": "Stephanie Smith", "display_unique": "Stephanie Smith"}, {"id": "g212", "first": "Alexa", "last": "Estrada", "display": "Alexa Estrada", "display_unique": "Alexa Estrada"}, {"id": "g213", "first": "Humberto", "last": "Garcia", "display": "Humberto Garcia", "display_unique": "Humberto Garcia"}, {"id": "g214", "first": "Julia", "last": "Berain", "display": "Julia Berain", "display_unique": "Julia Berain"}, {"id": "g215", "first": "Homero", "last": "Berain", "display": "Homero Berain", "display_unique": "Homero Berain"}, {"id": "g216", "first": "Carolina", "last": "Berain", "display": "Carolina Berain", "display_unique": "Carolina Berain"}, {"id": "g217", "first": "Art", "last": "Martinez", "display": "Art Martinez", "display_unique": "Art Martinez"}, {"id": "g218", "first": "Amador", "last": "Martinez", "display": "Amador Martinez", "display_unique": "Amador Martinez"}, {"id": "g219", "first": "Anali", "last": "Hinojosa", "display": "Anali Hinojosa", "display_unique": "Anali Hinojosa"}, {"id": "g220", "first": "Amanda", "last": "Cox", "display": "Amanda Cox", "display_unique": "Amanda Cox"}, {"id": "g221", "first": "Dale", "last": "Cox", "display": "Dale Cox", "display_unique": "Dale Cox"}, {"id": "g222", "first": "Fred", "last": "Oviedo", "display": "Fred Oviedo", "display_unique": "Fred Oviedo"}, {"id": "g301", "first": "Iselda", "last": "Oviedo", "display": "Iselda Oviedo", "display_unique": "Iselda Oviedo"}, {"id": "g224", "first": "Oscar", "last": "Bazan", "display": "Oscar Bazan", "display_unique": "Oscar Bazan"}, {"id": "g225", "first": "Javier", "last": "Bazan", "display": "Javier Bazan", "display_unique": "Javier Bazan"}, {"id": "g226", "first": "Aimee", "last": "Bazan", "display": "Aimee Bazan", "display_unique": "Aimee Bazan"}, {"id": "g302", "first": "Ernesto", "last": "Davila", "display": "Ernesto Davila", "display_unique": "Ernesto Davila"}, {"id": "g228", "first": "Kelly", "last": "Davila", "display": "Kelly Davila", "display_unique": "Kelly Davila"}, {"id": "g229", "first": "Isaac", "last": "Garcia", "display": "Isaac Garcia", "display_unique": "Isaac Garcia"}, {"id": "g230", "first": "Alexis", "last": "Garcia", "display": "Alexis Garcia", "display_unique": "Alexis Garcia"}, {"id": "g231", "first": "Adriana", "last": "Martinez", "display": "Adriana Martinez", "display_unique": "Adriana Martinez"}, {"id": "g303", "first": "Jorge", "last": "Ramirez", "display": "Jorge Ramirez", "display_unique": "Jorge Ramirez"}, {"id": "g304", "first": "April", "last": "Zuniga", "display": "April Zuniga", "display_unique": "April Zuniga"}, {"id": "g237", "first": "Francisco", "last": "Velasco", "display": "Francisco Velasco", "display_unique": "Francisco Velasco"}, {"id": "g238", "first": "Yahir", "last": "Galvan", "display": "Yahir Galvan", "display_unique": "Yahir Galvan"}, {"id": "g239", "first": "Jose", "last": "Cabrieles", "display": "Jose Cabrieles", "display_unique": "Jose Cabrieles"}, {"id": "g240", "first": "Jose Wife", "last": "Cabrieles", "display": "Jose Wife Cabrieles", "display_unique": "Jose Wife Cabrieles"}, {"id": "g241", "first": "Christopher", "last": "Rangel", "display": "Christopher Rangel", "display_unique": "Christopher Rangel"}, {"id": "g242", "first": "Gabriella", "last": "Davila", "display": "Gabriella Davila", "display_unique": "Gabriella Davila"}, {"id": "g243", "first": "Ramiro", "last": "Cantu", "display": "Ramiro Cantu", "display_unique": "Ramiro Cantu"}, {"id": "g245", "first": "Freddy", "last": "Solis", "display": "Freddy Solis", "display_unique": "Freddy Solis"}, {"id": "g305", "first": "Jezzette", "last": "Solis", "display": "Jezzette Solis", "display_unique": "Jezzette Solis"}, {"id": "g306", "first": "Josh", "last": "Garcia", "display": "Josh Garcia", "display_unique": "Josh Garcia"}, {"id": "g249", "first": "Olympia", "last": "De Los Santos", "display": "Olympia De Los Santos", "display_unique": "Olympia De Los Santos"}, {"id": "g307", "first": "Alexis", "last": "Martinez Garcia", "display": "Alexis Martinez Garcia", "display_unique": "Alexis Martinez Garcia"}, {"id": "g250", "first": "Maria", "last": "Terrazas", "display": "Maria Terrazas", "display_unique": "Maria Terrazas"}, {"id": "g171", "first": "Diego", "last": "Bolanos", "display": "Diego Bolanos", "display_unique": "Diego Bolanos"}, {"id": "g252", "first": "Alondra", "last": "Alcala", "display": "Alondra Alcala", "display_unique": "Alondra Alcala"}, {"id": "g253", "first": "Ethan", "last": "Rapp", "display": "Ethan Rapp", "display_unique": "Ethan Rapp"}, {"id": "g254", "first": "Ricardo", "last": "Zamora", "display": "Ricardo Zamora", "display_unique": "Ricardo Zamora"}, {"id": "g308", "first": "Abby", "last": "de la Garza", "display": "Abby de la Garza", "display_unique": "Abby de la Garza"}, {"id": "g256", "first": "Laura", "last": "Thompson", "display": "Laura Thompson", "display_unique": "Laura Thompson"}, {"id": "g257", "first": "Luis", "last": "Vela", "display": "Luis Vela", "display_unique": "Luis Vela"}];
+
+const RSVP_CUTOFF = new Date('2026-09-10T23:59:59-06:00');
+function isRsvpClosed(){ return new Date() > RSVP_CUTOFF; }
+
+const ITINERARY = [
+  {time:'2:00 PM', title:'Ceremony'},
+  {time:'4:00 PM', title:'Cocktail Hour'},
+  {time:'12:00 AM', title:'DJ &amp; After Party at Same Venue'}
+];
+
+const FAQS = [
+  {q:'Is the ceremony indoors or outdoors?', a:'The ceremony will be located indoors at Our Lady of Sorrows Catholic Church.'},
+  {q:'Will there be parking available?', a:'Yes, both Ceremony and Reception locations will have plenty of parking available for guests.'},
+  {q:'Can I bring a guest?', a:'We kindly ask that only those listed on your invitation attend, as we are celebrating in an intimate setting.'},
+  {q:'What time should I arrive?', a:'Guests are kindly asked to arrive 15–20 minutes before the ceremony to ensure a prompt start.'},
+  {q:'Are children welcome?', a:'While we adore your little ones, our wedding will be an adult-only celebration to allow all guests to relax and enjoy the evening. Children will not be allowed inside the venues.'},
+  {q:'Is there a gift registry?', a:'Your presence is the greatest gift. However, if you wish to honor us with a gift, you can contribute toward our honeymoon fund.'},
+  {q:'Will food and drinks be served?', a:'A full dinner and bar will be provided. No outside food or drinks will be allowed at the venue.'},
+  {q:"What's the best way to share photos?", a:"We'd love to see the celebration through your eyes! Please use our wedding hashtag #tenoutoftenwedding when posting."}
+];
+
+function renderItinerary(){
+  const el = document.getElementById('timeline-list');
+  el.innerHTML = ITINERARY.map(i => `
+    <div class="dot-row">
+      <div class="time">${i.time}</div>
+      <div class="fill"></div>
+      <div class="title">${i.title}</div>
+    </div>`).join('');
+}
+
+function renderFaq(){
+  const el = document.getElementById('faq-list');
+  el.innerHTML = FAQS.map(f => `
+    <div class="faq-item">
+      <div class="faq-q-title">${f.q}</div>
+      <div class="faq-a-text">${f.a}</div>
+    </div>`).join('');
+}
+
+/* ---------------- countdown ---------------- */
+function renderCountdown(){
+  const target = new Date('2026-10-10T14:00:00-06:00').getTime();
+  function tick(){
+    const now = Date.now();
+    let diff = Math.max(0, target - now);
+    const d = Math.floor(diff/86400000); diff -= d*86400000;
+    const h = Math.floor(diff/3600000); diff -= h*3600000;
+    const m = Math.floor(diff/60000); diff -= m*60000;
+    const s = Math.floor(diff/1000);
+    document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+}
+
+/* ---------------- envelope opening ---------------- */
+document.getElementById('open-btn').addEventListener('click', ()=>{
+  const flap = document.getElementById('env-flap');
+  const wrap = document.getElementById('invite-wrap');
+  const screen = document.getElementById('envelope-screen');
+  const site = document.getElementById('main-site');
+
+  flap.classList.add('open');
+  setTimeout(()=>{ wrap.classList.add('opened'); }, 1000);
+  setTimeout(()=>{ screen.classList.add('hidden'); site.classList.add('revealed'); }, 1600);
+});
+
+/* ---------------- mobile menu ---------------- */
+document.getElementById('menu-toggle').addEventListener('click', ()=>{
+  document.getElementById('mobile-menu').classList.toggle('open');
+});
+document.querySelectorAll('.mobile-menu a').forEach(a=>{
+  a.addEventListener('click', ()=> document.getElementById('mobile-menu').classList.remove('open'));
+});
+
+/* ---------------- RSVP logic ---------------- */
+let selectedGuest = null;
+let attendChoice = null;
+
+let respondedIds = new Set();
+let respondedIdsLoaded = false;
+async function loadRespondedIds(force){
+  if(respondedIdsLoaded && !force) return;
+  try{
+    const res = await fetch('/api/rsvp-status');
+    if(res.ok){
+      const data = await res.json();
+      respondedIds = new Set(data.respondedIds || []);
+    }
+  }catch(e){}
+  respondedIdsLoaded = true;
+}
+
+const searchInput = document.getElementById('guest-search');
+const dropdown = document.getElementById('guest-dropdown');
+
+searchInput.addEventListener('input', async ()=>{
+  const q = searchInput.value.trim().toLowerCase();
+  if(q.length < 1){ dropdown.classList.remove('open'); return; }
+  await loadRespondedIds();
+  const matches = GUESTS.filter(g => {
+    const name = g.display.toLowerCase();
+    if(!name.includes(q)) return false;
+    if(respondedIds.has(g.id) && name !== q) return false;
+    return true;
+  }).slice(0,12);
+  if(matches.length === 0){
+    dropdown.innerHTML = '<div class="dropdown-empty">No matching invitation found. Please check the spelling, or contact the couple.</div>';
+  } else {
+    dropdown.innerHTML = matches.map(g => `<button type="button" data-id="${g.id}">${g.display}</button>`).join('');
+  }
+  dropdown.classList.add('open');
+});
+
+dropdown.addEventListener('click', async (e)=>{
+  const btn = e.target.closest('button[data-id]');
+  if(!btn) return;
+  if(isRsvpClosed()){ document.getElementById('rsvp-closed-overlay').classList.add('open'); dropdown.classList.remove('open'); return; }
+  const guest = GUESTS.find(g => g.id === btn.dataset.id);
+  selectedGuest = guest;
+  searchInput.value = guest.display;
+  dropdown.classList.remove('open');
+  await loadGuestFlow(guest);
+});
+
+document.addEventListener('click', (e)=>{
+  if(!e.target.closest('.search-wrap')) dropdown.classList.remove('open');
+});
+
+async function loadGuestFlow(guest){
+  const seatNote = document.getElementById('seat-note');
+  const form = document.getElementById('rsvp-form');
+  const msgBox = document.getElementById('rsvp-msg');
+  msgBox.classList.remove('show'); msgBox.innerHTML='';
+
+  let existing = null;
+  try{
+    const res = await fetch('/api/rsvp?guestId=' + encodeURIComponent(guest.id));
+    if(res.ok){ const data = await res.json(); existing = data.rsvp || null; }
+  }catch(e){ existing = null; }
+
+  seatNote.style.display = 'block';
+  seatNote.textContent = `You're RSVPing as ${guest.display}.`;
+
+  form.classList.add('show');
+
+  attendChoice = existing ? existing.attending : null;
+  updateAttendButtons();
+
+  if(existing){
+    msgBox.classList.add('show');
+    msgBox.innerHTML = `We already have an RSVP on file for you (submitted ${new Date(existing.submittedAt).toLocaleDateString()}). Feel free to update your response below and resubmit.`;
+  }
+}
+
+function updateAttendButtons(){
+  const yesBtn = document.getElementById('attend-yes');
+  const noBtn = document.getElementById('attend-no');
+  yesBtn.classList.toggle('selected', attendChoice === 'yes');
+  noBtn.classList.toggle('selected', attendChoice === 'no');
+}
+
+document.getElementById('attend-yes').addEventListener('click', ()=>{
+  attendChoice = 'yes'; updateAttendButtons();
+});
+document.getElementById('attend-no').addEventListener('click', ()=>{
+  attendChoice = 'no'; updateAttendButtons();
+});
+
+document.getElementById('close-rsvp-closed').addEventListener('click', ()=>{
+  document.getElementById('rsvp-closed-overlay').classList.remove('open');
+});
+
+document.getElementById('rsvp-submit').addEventListener('click', async ()=>{
+  if(isRsvpClosed()){
+    document.getElementById('rsvp-closed-overlay').classList.add('open');
+    return;
+  }
+  const msgBox = document.getElementById('rsvp-msg');
+  if(!selectedGuest){
+    msgBox.classList.add('show');
+    msgBox.textContent = 'Please select your name from the list above first.';
+    return;
+  }
+  if(!attendChoice){
+    msgBox.classList.add('show');
+    msgBox.textContent = 'Please let us know whether you can attend.';
+    return;
+  }
+
+  const submitBtn = document.getElementById('rsvp-submit');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Submitting…';
+
+  try{
+    const res = await fetch('/api/rsvp', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        guestId: selectedGuest.id,
+        guestName: selectedGuest.display,
+        attending: attendChoice
+      })
+    });
+    if(!res.ok) throw new Error('Request failed');
+    respondedIds.add(selectedGuest.id);
+  }catch(e){
+    msgBox.classList.add('show');
+    msgBox.textContent = 'Something went wrong saving your RSVP — please try again in a moment.';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit RSVP';
+    return;
+  }
+
+  submitBtn.disabled = false;
+  submitBtn.textContent = 'Submit RSVP';
+  msgBox.classList.add('show');
+  msgBox.innerHTML = attendChoice === 'yes'
+    ? 'Thank you! Your RSVP has been received. We cannot wait to celebrate with you on October 10, 2026.'
+    : 'Thank you for letting us know. You will be missed, and we appreciate your response.';
+});
+
+/* ---------------- ADMIN ---------------- */
+document.getElementById('open-admin').addEventListener('click', (e)=>{
+  e.preventDefault();
+  document.getElementById('admin-overlay').classList.add('open');
+});
+let adminPassword = '';
+document.getElementById('admin-login').addEventListener('click', async ()=>{
+  const pw = document.getElementById('admin-password').value;
+  const ok = await fetchAllRsvps(pw);
+  if(ok){
+    adminPassword = pw;
+    document.getElementById('admin-overlay').classList.remove('open');
+    document.getElementById('admin-dashboard').classList.add('open');
+    drawAdminCards();
+    drawAdminTable();
+  } else {
+    document.getElementById('admin-err').style.display = 'block';
+  }
+});
+document.getElementById('close-admin').addEventListener('click', ()=>{
+  document.getElementById('admin-dashboard').classList.remove('open');
+});
+
+let allRsvps = {};
+
+async function fetchAllRsvps(password){
+  try{
+    const res = await fetch('/api/admin?password=' + encodeURIComponent(password));
+    if(!res.ok) return false;
+    const data = await res.json();
+    allRsvps = {};
+    (data.rsvps || []).forEach(r => { allRsvps[r.guestId] = r; });
+    return true;
+  }catch(e){ return false; }
+}
+
+function drawAdminCards(){
+  const total = GUESTS.length;
+  const responded = Object.keys(allRsvps).length;
+  const attending = Object.values(allRsvps).filter(r=>r.attending==='yes').length;
+  const declining = Object.values(allRsvps).filter(r=>r.attending==='no').length;
+  const pending = total - responded;
+  const cards = [
+    {n: total, l:'Total Invited'},
+    {n: responded, l:'RSVPs Received'},
+    {n: attending, l:'Attending'},
+    {n: declining, l:'Declining'},
+    {n: pending, l:'Awaiting Response'}
+  ];
+  document.getElementById('admin-cards').innerHTML = cards.map(c=>`
+    <div class="admin-card"><div class="num">${c.n}</div><div class="lbl">${c.l}</div></div>`).join('');
+}
+
+function drawAdminTable(){
+  const search = document.getElementById('admin-search').value.trim().toLowerCase();
+  const filter = document.getElementById('admin-filter').value;
+
+  let rows = GUESTS.map(g=>{
+    const rsvp = allRsvps[g.id];
+    let status = 'pending';
+    if(rsvp) status = rsvp.attending === 'yes' ? 'attending' : 'declining';
+    return {g, rsvp, status};
+  });
+
+  if(search) rows = rows.filter(r => r.g.display.toLowerCase().includes(search));
+  if(filter !== 'all') rows = rows.filter(r => r.status === filter);
+
+  document.getElementById('admin-tbody').innerHTML = rows.map(r=>{
+    const pillClass = r.status === 'attending' ? 'status-yes' : r.status === 'declining' ? 'status-no' : 'status-pending';
+    const pillLabel = r.status === 'attending' ? 'Attending' : r.status === 'declining' ? 'Declining' : 'Awaiting';
+    return `
+      <tr>
+        <td>${r.g.display}</td>
+        <td><span class="status-pill ${pillClass}">${pillLabel}</span></td>
+        <td>${r.rsvp ? new Date(r.rsvp.submittedAt).toLocaleDateString() : '—'}</td>
+      </tr>`;
+  }).join('');
+}
+
+document.getElementById('admin-search').addEventListener('input', drawAdminTable);
+document.getElementById('admin-filter').addEventListener('change', drawAdminTable);
+
+document.getElementById('admin-export').addEventListener('click', ()=>{
+  const header = ['Guest','Status','Submitted'];
+  const rows = GUESTS.map(g=>{
+    const rsvp = allRsvps[g.id];
+    const status = rsvp ? (rsvp.attending==='yes'?'Attending':'Declining') : 'Awaiting';
+    return [
+      g.display, status,
+      rsvp ? new Date(rsvp.submittedAt).toLocaleString() : ''
+    ];
+  });
+  const csv = [header, ...rows].map(r => r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'rsvp-export.csv'; a.click();
+  URL.revokeObjectURL(url);
+});
+
+/* ---------------- init ---------------- */
+renderItinerary();
+renderFaq();
+renderCountdown();
+</script>
+</body>
+</html>
