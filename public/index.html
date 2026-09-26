@@ -181,6 +181,8 @@
   @media (min-width:900px){ nav.site-nav ul{display:flex;} nav.site-nav ul.right{order:3;} }
   .nav-rsvp-btn{background:var(--ink); color:var(--parchment); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; padding:9px 18px; border:1px solid var(--ink); transition:background 0.3s ease, color 0.3s ease; font-family:var(--serif); font-weight:400;}
   .nav-rsvp-btn:hover{background:transparent; color:var(--ink);}
+  .rsvp-closed-label{color:var(--ink-soft); cursor:default; font-style:italic;}
+  .hero-cta.rsvp-closed-label{display:inline-block; border:1px solid var(--parchment); padding:14px 40px; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; font-family:var(--serif); font-style:normal; color:var(--parchment); background:transparent;}
   .nav-menu-toggle{display:block; background:none; border:none; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; font-family:var(--serif);}
   @media (min-width:900px){ .nav-menu-toggle{display:none;} }
   .mobile-menu{display:none; flex-direction:column; background:var(--parchment); border-bottom:1px solid var(--line);}
@@ -397,7 +399,7 @@
     <a href="#our-story" class="nav-logo">Our Story</a>
     <ul class="right">
       <li><a href="#registry">Registry</a></li>
-      <li><a href="#rsvp">RSVP</a></li>
+      <li><span class="rsvp-closed-label">RSVP's Now Closed</span></li>
       <li><a href="#faq">Questions</a></li>
     </ul>
     <button class="nav-menu-toggle" id="menu-toggle">Menu</button>
@@ -410,7 +412,7 @@
     <a href="#dress-code">Dress Code</a>
     <a href="#registry">Registry</a>
     <a href="#faq">Questions</a>
-    <a href="#rsvp">RSVP</a>
+    <span class="rsvp-closed-label">RSVP's Now Closed</span>
   </div>
 
   <!-- HOME -->
@@ -423,7 +425,7 @@
       <div class="kicker">You are cordially invited to the wedding of</div>
       <div class="invite-script">Jessica &amp; Erick</div>
       <div class="date-line">October the 10th, 2026</div>
-      <div><a href="#rsvp" class="hero-cta">RSVP Now</a></div>
+      <div><span class="hero-cta rsvp-closed-label">RSVP's Now Closed</span></div>
     </div>
   </section>
 
@@ -529,41 +531,6 @@
     </div>
   </section>
 
-  <!-- RSVP -->
-  <section id="rsvp">
-    <span class="script">Please RSVP</span>
-    <svg class="scroll-divider" viewBox="0 0 220 16"><line x1="0" y1="8" x2="220" y2="8" stroke="#1c1a16" stroke-width="1"/><circle cx="110" cy="8" r="4" fill="none" stroke="#1c1a16" stroke-width="1"/></svg>
-    <p class="rsvp-deadline">By 09 · 10 · 2026</p>
-    <p class="rsvp-kids">We'll miss you if we don't hear from you — RSVPs close September 10, 2026.</p>
-    <p class="sub">We can't wait to celebrate this special day with you! Kindly fill out the RSVP form below. We hope to see you there.</p>
-    <p class="rsvp-no-kids">No Kids Allowed</p>
-
-    <div class="rsvp-box">
-      <p class="field-label">Please select your name from the guest list below</p>
-      <div class="search-wrap">
-        <input type="text" class="rsvp-input" id="guest-search" placeholder="Start typing your name…" autocomplete="off">
-        <div class="dropdown-list" id="guest-dropdown"></div>
-      </div>
-
-      <div class="seat-note" id="seat-note" style="display:none;"></div>
-
-      <div class="rsvp-form" id="rsvp-form">
-        <div>
-          <span class="field-label">Will you be attending?</span>
-          <div class="attend-toggle">
-            <button type="button" data-val="yes" id="attend-yes">Joyfully Accept</button>
-            <button type="button" data-val="no" id="attend-no">Regretfully Decline</button>
-          </div>
-        </div>
-
-        <button class="submit-btn" id="rsvp-submit">Submit RSVP</button>
-      </div>
-
-      <div class="rsvp-msg" id="rsvp-msg"></div>
-      <p class="rsvp-note-line">Each guest RSVPs individually — please search and submit your own name, even if you're coming with someone else on the list. Already responded? Search your name again to view or update your RSVP.</p>
-    </div>
-  </section>
-
   <!-- CLOSING -->
   <section id="closing">
     <img src="/images/closing.jpg" alt="Jessica and Erick lying in a field">
@@ -583,13 +550,6 @@
 
 <!-- ================= ADMIN GATE ================= -->
 
-<div id="rsvp-closed-overlay">
-  <div class="rsvp-closed-box">
-    <span class="script">We'll Miss You</span>
-    <p>RSVPs closed on September 10, 2026 and are no longer being accepted. Please reach out to Jessica &amp; Erick directly at meettheochoas@gmail.com if you have questions.</p>
-    <button id="close-rsvp-closed">Close</button>
-  </div>
-</div>
 <div id="admin-overlay">
   <div class="admin-gate">
     <span class="tracked small">Private</span>
@@ -714,162 +674,6 @@ document.getElementById('menu-toggle').addEventListener('click', ()=>{
 });
 document.querySelectorAll('.mobile-menu a').forEach(a=>{
   a.addEventListener('click', ()=> document.getElementById('mobile-menu').classList.remove('open'));
-});
-
-/* ---------------- RSVP logic ---------------- */
-let selectedGuest = null;
-let attendChoice = null;
-
-let respondedIds = new Set();
-let respondedIdsLoaded = false;
-async function loadRespondedIds(force){
-  if(respondedIdsLoaded && !force) return;
-  try{
-    const res = await fetch('/api/rsvp-status');
-    if(res.ok){
-      const data = await res.json();
-      respondedIds = new Set(data.respondedIds || []);
-    }
-  }catch(e){}
-  respondedIdsLoaded = true;
-}
-
-const searchInput = document.getElementById('guest-search');
-const dropdown = document.getElementById('guest-dropdown');
-
-searchInput.addEventListener('input', async ()=>{
-  const q = searchInput.value.trim().toLowerCase();
-  if(q.length < 1){ dropdown.classList.remove('open'); return; }
-  await loadRespondedIds();
-  const matches = GUESTS.filter(g => {
-    const name = g.display.toLowerCase();
-    if(!name.includes(q)) return false;
-    if(respondedIds.has(g.id) && name !== q) return false;
-    return true;
-  }).slice(0,12);
-  if(matches.length === 0){
-    dropdown.innerHTML = '<div class="dropdown-empty">No matching invitation found. Please check the spelling, or contact the couple.</div>';
-  } else {
-    dropdown.innerHTML = matches.map(g => `<button type="button" data-id="${g.id}">${g.display}</button>`).join('');
-  }
-  dropdown.classList.add('open');
-});
-
-dropdown.addEventListener('click', async (e)=>{
-  const btn = e.target.closest('button[data-id]');
-  if(!btn) return;
-  if(isRsvpClosed()){ document.getElementById('rsvp-closed-overlay').classList.add('open'); dropdown.classList.remove('open'); return; }
-  const guest = GUESTS.find(g => g.id === btn.dataset.id);
-  selectedGuest = guest;
-  searchInput.value = guest.display;
-  dropdown.classList.remove('open');
-  await loadGuestFlow(guest);
-});
-
-document.addEventListener('click', (e)=>{
-  if(!e.target.closest('.search-wrap')) dropdown.classList.remove('open');
-});
-
-async function loadGuestFlow(guest){
-  const seatNote = document.getElementById('seat-note');
-  const form = document.getElementById('rsvp-form');
-  const msgBox = document.getElementById('rsvp-msg');
-  msgBox.classList.remove('show'); msgBox.innerHTML='';
-
-  let existing = null;
-  try{
-    const res = await fetch('/api/rsvp?guestId=' + encodeURIComponent(guest.id));
-    if(res.ok){ const data = await res.json(); existing = data.rsvp || null; }
-  }catch(e){ existing = null; }
-
-  seatNote.style.display = 'block';
-  seatNote.textContent = `You're RSVPing as ${guest.display}.`;
-
-  form.classList.add('show');
-
-  attendChoice = existing ? existing.attending : null;
-  updateAttendButtons();
-
-  if(existing){
-    msgBox.classList.add('show');
-    msgBox.innerHTML = `We already have an RSVP on file for you (submitted ${new Date(existing.submittedAt).toLocaleDateString()}). Feel free to update your response below and resubmit.`;
-  }
-}
-
-function updateAttendButtons(){
-  const yesBtn = document.getElementById('attend-yes');
-  const noBtn = document.getElementById('attend-no');
-  yesBtn.classList.toggle('selected', attendChoice === 'yes');
-  noBtn.classList.toggle('selected', attendChoice === 'no');
-}
-
-document.getElementById('attend-yes').addEventListener('click', ()=>{
-  attendChoice = 'yes'; updateAttendButtons();
-});
-document.getElementById('attend-no').addEventListener('click', ()=>{
-  attendChoice = 'no'; updateAttendButtons();
-});
-
-document.getElementById('close-rsvp-closed').addEventListener('click', ()=>{
-  document.getElementById('rsvp-closed-overlay').classList.remove('open');
-});
-
-document.getElementById('rsvp-submit').addEventListener('click', async ()=>{
-  if(isRsvpClosed()){
-    document.getElementById('rsvp-closed-overlay').classList.add('open');
-    return;
-  }
-  const msgBox = document.getElementById('rsvp-msg');
-  if(!selectedGuest){
-    msgBox.classList.add('show');
-    msgBox.textContent = 'Please select your name from the list above first.';
-    return;
-  }
-  if(!attendChoice){
-    msgBox.classList.add('show');
-    msgBox.textContent = 'Please let us know whether you can attend.';
-    return;
-  }
-
-  const submitBtn = document.getElementById('rsvp-submit');
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Submitting…';
-
-  try{
-    const res = await fetch('/api/rsvp', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        guestId: selectedGuest.id,
-        guestName: selectedGuest.display,
-        attending: attendChoice
-      })
-    });
-    if(!res.ok){
-      let detail = '';
-      try{
-        const errBody = await res.json();
-        detail = errBody && errBody.error ? errBody.error : '';
-      }catch(parseErr){
-        detail = 'HTTP ' + res.status;
-      }
-      throw new Error(detail || ('HTTP ' + res.status));
-    }
-    respondedIds.add(selectedGuest.id);
-  }catch(e){
-    msgBox.classList.add('show');
-    msgBox.textContent = 'Something went wrong saving your RSVP — please try again, or contact the couple directly. (Details: ' + (e && e.message ? e.message : 'unknown error') + ')';
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Submit RSVP';
-    return;
-  }
-
-  submitBtn.disabled = false;
-  submitBtn.textContent = 'Submit RSVP';
-  msgBox.classList.add('show');
-  msgBox.innerHTML = attendChoice === 'yes'
-    ? 'Thank you! Your RSVP has been received. We cannot wait to celebrate with you on October 10, 2026.'
-    : 'Thank you for letting us know. You will be missed, and we appreciate your response.';
 });
 
 /* ---------------- ADMIN ---------------- */
